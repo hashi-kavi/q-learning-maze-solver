@@ -1,5 +1,6 @@
 from scripts.environment import MazeEnv
 from scripts.agent import QLearningAgent
+import numpy as np
 
 env = MazeEnv(size=5)
 agent = QLearningAgent(env.state_space,env.action_space)
@@ -32,3 +33,26 @@ for e in range(episodes):
         # print episodes in 100s total reward
 
 print("Training Finished!")
+ 
+# test the agent
+steps = 0
+
+
+state = env.reset()
+done = False
+
+print("Starting Position:", env.agent_pos)
+MazeEnv.visualize_maze(env,env.agent_pos)
+moves = ['Up','Down','Left','Right']
+while not done  and steps< 25 :
+    action = np.argmax(agent.q_table[state])#This is equivalent to epsilon = 0 (pure exploitation),the agent always chooses the best known action.
+    move = moves[action]
+    state,reward,done = env.step(action)
+    print(f"Step {steps+1}: Agent move {move}")
+    MazeEnv.visualize_maze(env,env.agent_pos)
+    steps+=1
+if done:
+    print("Goal Reached in ", steps,'steps!👾🎉')
+else:
+    print("Agent got lost or stuck.😒")
+        
