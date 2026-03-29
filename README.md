@@ -54,13 +54,14 @@ Reward shaping:
 ```text
 q-learning-maze-solver/
 ├── train.py
+├── visualize.py
+├── robot.png
 ├── scripts/
 │   ├── agent.py
 │   ├── environment.py
 │   └── __init__.py
 ├── notebook/
-│   ├── learning_curves.ipynb
-│   └── training.ipynb
+│   └── learning_curves.ipynb
 ├── data/
 ├── README.md
 ├── LICENSE
@@ -72,7 +73,7 @@ q-learning-maze-solver/
 ### 1. Install dependencies
 
 ```bash
-pip install numpy matplotlib jupyter
+pip install numpy matplotlib jupyter pygame
 ```
 
 ### 2. Train and test policy
@@ -100,9 +101,13 @@ If the agent reaches the goal in 8 steps without wall collisions, a final reward
 ## Notebook Usage
 
 - Use notebook/learning_curves.ipynb to visualize rewards and inspect the Q-table
-- notebook/training.ipynb can be used as an optional interactive sandbox
 
 For reproducible training, use train.py as the main entry point.
+
+## Visualization Script
+
+- `visualize.py` is available for Pygame-based rendering of the agent in the maze.
+- `robot.png` is used as the agent sprite.
 
 ## Author
 

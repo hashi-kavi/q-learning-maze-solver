@@ -49,16 +49,16 @@ class MazeEnv:
             done = True
         return next_state,reward ,done
 
-    def visualize_maze(self,env,agent_pos):
-        grid = np.full((env.size,env.size),".",dtype=str)
+    def visualize_maze(self,agent_pos):
+        grid = np.full((self.size,self.size),".",dtype=str)
         
 
         # mark the walls
-        for r,c in env.walls:
+        for r,c in self.walls:
             grid[r,c] = "X"
 
         # mark the goal
-        grid[env.size-1,env.size-1] = "G"
+        grid[self.size-1,self.size-1] = "G"
 
         # mark the agent's current position
 
