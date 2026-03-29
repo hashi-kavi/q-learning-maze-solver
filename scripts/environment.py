@@ -49,7 +49,7 @@ class MazeEnv:
             done = True
         return next_state,reward ,done
 
-    def visualize_maze(env,agent_pos):
+    def visualize_maze(self,env,agent_pos):
         grid = np.full((env.size,env.size),".",dtype=str)
         
 
